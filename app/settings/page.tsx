@@ -12,7 +12,6 @@ import { useState } from 'react';
 
 const settingsSchema = z.object({
     leetcodeUsername: z.string().optional().or(z.literal('')),
-    devtoApiKey: z.string().optional().or(z.literal('')),
 });
 
 type SettingsFormValues = z.infer<typeof settingsSchema>;
@@ -26,8 +25,6 @@ export default function SettingsPage() {
 
         values: {
             leetcodeUsername: user?.leetcodeUsername || '',
-            // devtoApiKey: user?.devtoApiKey || "",
-            devtoApiKey: "3hzzfMk1bTwn5QJyWUVuNaVM",
         }
     });
 
@@ -94,24 +91,6 @@ export default function SettingsPage() {
                                 placeholder="e.g., johndoe"
                             />
                             {errors.leetcodeUsername && <p className="mt-2 text-sm text-red-500">{errors.leetcodeUsername.message}</p>}
-                        </div>
-
-                        {/* Dev.to API Key */}
-                        <div>
-                            <label htmlFor="devtoApiKey" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Dev.to API Key
-                            </label>
-                            <input
-                                id="devtoApiKey"
-                                {...register("devtoApiKey")}
-                                className="mt-1 block w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-2 px-3 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            />
-                            {errors.devtoApiKey && (
-                                <p className="text-sm text-red-500 mt-1">{errors.devtoApiKey.message}</p>
-                            )}
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                                You can generate your API key at dev.to/settings/account.
-                            </p>
                         </div>
 
                         <div className="flex justify-end">
